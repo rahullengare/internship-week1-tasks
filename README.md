@@ -1,135 +1,48 @@
-# Task 1: Cloud Account Onboarding
-## About This Task
+# Week 1 Projects: Cloud Computing Internship
 
-**What the task is:** Set up secure access to the company's cloud dev sandbox and learn the team's tagging and naming rules.
+**Role:** Cloud Computing Intern (Infrastructure & DevOps Track)
 
-**Why it matters:** Every later task (infrastructure map, static site, script, alerts) depends on having working access. Security (MFA, IAM user) and tagging rules must be followed from day one.
+**Organization:** WeIntern Pvt Ltd
 
-**What I had to do:**
-1. Set up my IAM user
-2. Enable MFA
-3. Install the cloud CLI
-4. Verify access to the dev sandbox
-5. Review the tagging and naming conventions
+**Intern:** Rahul Lengare
 
-**Deliverable:** Checklist signed off by my mentor.
+This repository holds the work completed in **Week 1** of the internship: cloud account setup, infrastructure mapping, static site hosting with a CDN, cost automation, and basic monitoring. Each project has its own README that explains the steps in detail.
 
+---
 
-## Step-by-Step Guide
+## Projects
 
-### Step 1: Log in with the IAM user
-1. Open the sign-in URL given by the mentor.
-2. Enter the account ID, username and temporary password.
-3. Set a new password when asked.
+| # | Project | What I did | Tools | Details |
+|---|---------|------------|-------|---------|
+| 1 | Cloud Account Onboarding | Set up a secure IAM login with MFA, installed and configured the AWS CLI, and verified access to the dev sandbox. | IAM, MFA, AWS CLI | [README_task1.md](README_task1.md) |
+| 2 | Infrastructure Map | Explored the dev environment and drew its architecture: VPCs, subnets, services and how they connect. | VPC, draw.io | [README_task2.md](README_task2.md) |
+| 3 | Static Site with CDN | Hosted the front end of my DayFlow task tracker on a private S3 bucket behind CloudFront, using a bucket policy that only allows CloudFront to read it. | S3, CloudFront | [README_task3.md](README_task3.md) |
+| 4 | Automation Script | Wrote a script that lists running instances, filters them by tag, and prints a cost estimate. | Python (boto3), Git | [README_task4.md](README_task4.md) |
+| 5 | Cloud Alerts | Created alarms for high CPU usage and a cost threshold, and tested that they trigger. | CloudWatch | [README_task5.md](README_task5.md) |
+| 6 | Tech Debrief | Summarized the week and described one problem I hit and how I solved it. | Documentation | [README_task6.md](README_task6.md) |
 
-> Use the IAM user. **Never use the root account.**
+---
 
-![screenshot](screenshots/iam-login.png)
+## Repository Structure
 
-
-### Step 2: Enable MFA
-1. Install an authenticator app on your phone (Google Authenticator, Authy or Microsoft Authenticator).
-2. In the console go to **IAM → Users → your username → Security credentials**.
-3. Click **Assign MFA device** and choose **Authenticator app**.
-4. Scan the QR code with the app.
-5. Enter two consecutive codes from the app and click **Add MFA**.
-
-![screenshot](screenshots/mfa-enabled.png)
-
-### Step 3: Create an access key (skip if the mentor already gave you one)
-1. On the same **Security credentials** page, click **Create access key**.
-2. Choose **Command Line Interface (CLI)**.
-3. Copy the Access Key ID and Secret Access Key and store them safely.
-
-> The secret key is shown only once. Never put it in Git, a README or a screenshot.
-
-No screenshot for this step, because it shows secrets.
-
-
-### Step 4: Install the AWS CLI
-- **Windows:** download and run the MSI installer from the AWS CLI docs.
-- **macOS:** `brew install awscli`
-- **Linux:** follow the install commands in the AWS CLI docs.
-
-Check the install:
-```bash
-aws --version
+```text
+internship-week1-tasks/
+├── README.md                       # This file: project overview
+├── README_task1.md                 # Cloud Account Onboarding
+├── README_task2.md                 # Infrastructure Map
+├── README_task3.md                 # Static Site with CDN
+├── README_task4.md                 # Automation Script
+├── README_task5.md                 # Cloud Alerts
+├── README_task6.md                 # Tech Debrief
+└── screenshots/                    # All screenshots for every project
 ```
-![screenshot](screenshots/cli-version.png)
 
-### Step 5: Configure the CLI
-```bash
-aws configure
-```
-Enter:
-- Access Key ID
-- Secret Access Key
-- Default region (e.g. `ap-south-1`)
-- Output format: `json`
-
-### Step 6: Verify access to the dev sandbox
-```bash
-aws sts get-caller-identity
-aws s3 ls
-aws ec2 describe-instances --query "Reservations[].Instances[].InstanceId"
-```
-- The first command should show your account ID and user ARN.
-- The other two should return results or an empty list, not `AccessDenied`.
-- If you get `AccessDenied`, tell your mentor.
-
-![screenshot](screenshots/dev-sandbox.png)
-
-### Step 7: Review the tagging and naming conventions
-Open the team's conventions document and write down the rules below. You will use them in every later task, especially Task 4, where the script filters by tag.
-
-**Required tags**
-
-| Tag key | Example value |
-|---------|---------------|
-| `Env` | `Dev` |
-| `Owner` | `<my name>` |
-| `Project` | `<project name>` |
-
-**Naming pattern:** `<e.g. dev-<service>-<name>>`
-
-### Step 8: Get the checklist signed off
-
-| # | Item | Status | Evidence |
-|---|------|--------|----------|
-| 1 | Logged in with IAM user (not root) | ☐ | Screenshot 1 |
-| 2 | MFA enabled | ☐ | Screenshot 2 |
-| 3 | AWS CLI installed | ☐ | Screenshot 3 |
-| 4 | Dev sandbox access verified | ☐ | Screenshot 4 |
+All screenshots are stored in the `screenshots/` folder, and the project READMEs link to them.
 
 
+## Tools Used
 
-
-## Cleanup: How to Delete or Remove Resources
-
-Task 1 creates **no billable cloud resources**, so there is nothing to shut down to avoid charges. Do the cleanup below only at the right time.
-
-**Do not clean up yet.** You need your access, MFA and CLI for Tasks 2 to 6. Do this only **after the internship ends** or when your mentor says so.
-
-**A. Remove the CLI credentials from your computer**
-```bash
-# See what is stored
-aws configure list-profiles
-
-# Delete the stored credentials (Linux/macOS)
-rm ~/.aws/credentials ~/.aws/config
-```
-On Windows, delete the files in `C:\Users\<you>\.aws\`.
-
-**B. Delete the access key in the cloud console**
-1. Go to **IAM → Users → your username → Security credentials**.
-2. Under **Access keys**, click **Actions → Deactivate**, then **Delete**.
-
-**C. Delete local screenshots and notes with sensitive data**
-Delete any screenshot that still shows account IDs, keys or QR codes. Keep only the cropped or blurred copies in the repo.
-
-**D. Leave these alone**
-- Your IAM user and MFA device: the mentor or admin manages these.
-- Do not delete your MFA device unless an admin asks you to.
-
-**Quick check:** run `aws sts get-caller-identity`. It should now fail with an "Unable to locate credentials" error, which means the cleanup worked.
+- **Cloud:** AWS (IAM, VPC, S3, CloudFront, EC2, CloudWatch)
+- **Scripting and CLI:** AWS CLI, Python (boto3)
+- **Diagrams and version control:** draw.io, Git, GitHub
 
