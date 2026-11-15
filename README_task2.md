@@ -86,7 +86,23 @@ S3 bucket ----> Lambda
 - [ ] Every connection from Step 4 has an arrow
 - [ ] Account ID and sensitive values are blurred or removed
 
+<<<<<<< HEAD
 ## 3. Key Terms
+=======
+
+## 3. Screenshots Needed
+
+| After | Capture | File name |
+|-------|---------|-----------|
+| Step 2 | VPC Resource map | `vpc-resource-map.png` |
+| Step 3 | Tag Editor results | `services-list.png` |
+| Step 6 | Final diagram | `infrastructure-diagram.png` |
+
+Blur the account ID in every screenshot.
+
+
+## 4. Key Terms
+>>>>>>> 5120096 (Save local README updates)
 
 | Term | What it is |
 |------|------------|
@@ -101,7 +117,11 @@ S3 bucket ----> Lambda
 | **Security group** | A firewall for a resource. Shows which services connect to which. |
 
 
+<<<<<<< HEAD
 ## 4. Issues and Fixes
+=======
+## 5. Issues and Fixes
+>>>>>>> 5120096 (Save local README updates)
 
 | Issue | Cause | Fix |
 |-------|-------|-----|
@@ -110,7 +130,11 @@ S3 bucket ----> Lambda
 *(Write "No issues encountered" if there were none.)*
 
 
+<<<<<<< HEAD
 ## 5. Cleanup
+=======
+## 6. Cleanup
+>>>>>>> 5120096 (Save local README updates)
 
 This task is read-only, so there is nothing to delete in the cloud. **Do not change anything in the dev account.**
 
