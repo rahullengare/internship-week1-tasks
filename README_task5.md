@@ -131,6 +131,8 @@ aws cloudwatch set-alarm-state --alarm-name "Dev-Sandbox-Cost-Threshold-Alarm" -
 
 ![CPU alarm CLI setup and test](screenshots/alarm-terminal.png)
 
+> **How I tested:** I used method B (`set-alarm-state`) to check the alert pipeline. It changes the alarm state and sends the real SNS email, but it does not create real CPU load. The alarm itself is set to fire at 70% average CPU.
+
 ---
 
 ### Step 7: Confirm the `ALARM` state, check email, and reset to `OK`
@@ -239,5 +241,3 @@ aws sns delete-topic --topic-arn arn:aws:sns:ap-south-1:<account-id>:dev-sandbox
 aws cloudwatch delete-alarms --alarm-names "Dev-Sandbox-High-CPU-Alarm" --region ap-south-1
 aws cloudwatch delete-alarms --alarm-names "Dev-Sandbox-Cost-Threshold-Alarm" "Dev-Sandbox-High-CPU-Alarm" --region us-east-1
 ```
-
-**Keep:** `README_task5.md` and the screenshots (`alarm-terminal.png`, `outputPython_2.png` and `email-alert.png`, with the account ID blurred) in the repo as proof of the work.

@@ -1,48 +1,79 @@
 # Week 1 Projects: Cloud Computing Internship
 
+**Name:** Rahul Lengare
 **Role:** Cloud Computing Intern (Infrastructure & DevOps Track)
+**Company:** WeIntern Pvt Ltd
 
-**Organization:** WeIntern Pvt Ltd
+This is my work from **Week 1** of my cloud internship.
 
-**Intern:** Rahul Lengare
+In this week I learned how to:
+- set up a safe cloud account,
+- draw a map of a cloud system,
+- put a website online,
+- write a small script that checks cost,
+- and set up alerts that send me an email.
 
-This repository holds the work completed in **Week 1** of the internship: cloud account setup, infrastructure mapping, static site hosting with a CDN, cost automation, and basic monitoring. Each project has its own README that explains the steps in detail.
+Each project has its own page with every step. Click the link in the last column to open it.
+
+## The 6 Projects
+
+| # | Project | What I did | What I learned | Steps |
+|---|---------|------------|----------------|-------|
+| 1 | Cloud Account Setup | Made a safe login for AWS with a second check (MFA) and connected my computer to AWS. | Why a safe login matters, and how to use AWS from the terminal. | [Open](README_task1.md) |
+| 2 | Cloud Map | Drew a picture of what runs in our cloud and how the parts connect. | How a cloud network is built, with public and private parts. | [Open](README_task2.md) |
+| 3 | Website Online | Put a web page online using S3 (storage) and CloudFront (fast delivery). The storage is private, and only CloudFront can read it. | How websites are hosted cheaply and safely. | [Open](README_task3.md) |
+| 4 | Cost Script | Wrote a Python script that finds running servers with a tag and estimates what they cost. | How to use Python with AWS, and how to spot cost early. | [Open](README_task4.md) |
+| 5 | Alerts | Set alarms that send me an email when a server is too busy or the cost goes up. | How to watch the cloud so problems are found early. | [Open](README_task5.md) |
+| 6 | Weekly Summary | Wrote what I did this week and one problem I solved. | How to explain technical work in a clear way. | [Open](README_task6.md) |
 
 ---
 
-## Projects
+## What I Learned This Week
 
-| # | Project | What I did | Tools | Details |
-|---|---------|------------|-------|---------|
-| 1 | Cloud Account Onboarding | Set up a secure IAM login with MFA, installed and configured the AWS CLI, and verified access to the dev sandbox. | IAM, MFA, AWS CLI | [README_task1.md](README_task1.md) |
-| 2 | Infrastructure Map | Explored the dev environment and drew its architecture: VPCs, subnets, services and how they connect. | VPC, draw.io | [README_task2.md](README_task2.md) |
-| 3 | Static Site with CDN | Hosted the front end of my DayFlow task tracker on a private S3 bucket behind CloudFront, using a bucket policy that only allows CloudFront to read it. | S3, CloudFront | [README_task3.md](README_task3.md) |
-| 4 | Automation Script | Wrote a script that lists running instances, filters them by tag, and prints a cost estimate. | Python (boto3), Git | [README_task4.md](README_task4.md) |
-| 5 | Cloud Alerts | Created alarms for high CPU usage and a cost threshold, and tested that they trigger. | CloudWatch | [README_task5.md](README_task5.md) |
-| 6 | Tech Debrief | Summarized the week and described one problem I hit and how I solved it. | Documentation | [README_task6.md](README_task6.md) |
+- **Safety first.** Use your own login, turn on MFA, and keep things private.
+- **Labels help.** Tags (like `Env=Dev`) let a script find the right servers.
+- **Cost matters.** A small server still costs money while it runs, so check and clean up.
+- **Write it down.** Clear steps and screenshots let anyone repeat the work.
 
----
 
-## Repository Structure
+## Words You May Not Know
+
+| Word | Simple meaning |
+|------|----------------|
+| **Cloud / AWS** | Computers you rent over the internet from Amazon, instead of owning them. |
+| **Server (EC2)** | One rented computer in the cloud. |
+| **S3** | A place in the cloud to store files. |
+| **CloudFront** | A service that delivers a website fast to people all over the world. |
+| **IAM** | The tool that controls who can do what in the cloud account. |
+| **MFA** | A second check when you log in, like a code on your phone. |
+| **Tag** | A label on a cloud item, such as `Env=Dev`. |
+| **Alarm** | A rule that warns you, for example by email, when something goes wrong. |
+
+
+## Files in This Repository
 
 ```text
 internship-week1-tasks/
-├── README.md                       # This file: project overview
-├── README_task1.md                 # Cloud Account Onboarding
-├── README_task2.md                 # Infrastructure Map
-├── README_task3.md                 # Static Site with CDN
-├── README_task4.md                 # Automation Script
-├── README_task5.md                 # Cloud Alerts
-├── README_task6.md                 # Tech Debrief
-└── screenshots/                    # All screenshots for every project
+├── README.md                       
+├── README_task1.md                 # Project 1 
+├── README_task2.md                 # Project 2 
+├── README_task3.md                 # Project 3  
+├── README_task4.md                 # Project 4 
+├── README_task5.md                 # Project 5 
+├── README_task6.md                  
+├── infrastructure-diagram.drawio          
+├── cost_estimator.py                              
+├── screenshots/                    
+└── index.html  
 ```
 
-All screenshots are stored in the `screenshots/` folder, and the project READMEs link to them.
-
-
-## Tools Used
+## Tools I Used
 
 - **Cloud:** AWS (IAM, VPC, S3, CloudFront, EC2, CloudWatch)
-- **Scripting and CLI:** AWS CLI, Python (boto3)
-- **Diagrams and version control:** draw.io, Git, GitHub
+- **Code and terminal:** AWS CLI, Python (boto3)
+- **Drawing and saving work:** draw.io, Git, GitHub
 
+
+## Safety Note
+
+This repository has no passwords, secret keys or `.env` files. Account numbers and other private details are hidden in the pictures and pages.
